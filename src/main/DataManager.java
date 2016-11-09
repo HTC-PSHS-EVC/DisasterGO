@@ -8,12 +8,12 @@ public class DataManager {
     // <editor-fold defaultstate="collapsed" desc="Road Networks">  
     private int [] resourceDist;
     
-    private int [][] roadNetwork;
-    private int [][] airNetwork;
+    private double [][] roadNetwork;
+    private double [][] airNetwork;
     
-    private int prepTime;
+    private double prepTime;
     
-    private int [][] minDist;
+    private double [][] minDist;
     private int [][] minType;       // -1 -> empty
                                     //  0 -> road
                                     //  1 -> air
@@ -23,28 +23,28 @@ public class DataManager {
     public DataManager() {
         resourceDist = new int[7];
         
-        int [][] defaultRoad = {{ 0, -1, -1, -1, -1, -1, -1},
-                                {-1,  0, -1, -1, -1, -1, -1},
-                                {-1, -1,  0, -1, -1, -1, -1},
-                                {-1, -1, -1,  0, -1, -1, -1},
-                                {-1, -1, -1, -1,  0, -1, -1},
-                                {-1, -1, -1, -1, -1,  0, -1},
-                                {-1, -1, -1, -1, -1, -1,  0}};
-        int [][] defaultAir  = {{ 0, -1, -1, -1, -1, -1, -1},
-                                {-1,  0, -1, -1, -1, -1, -1},
-                                {-1, -1,  0, -1, -1, -1, -1},
-                                {-1, -1, -1,  0, -1, -1, -1},
-                                {-1, -1, -1, -1,  0, -1, -1},
-                                {-1, -1, -1, -1, -1,  0, -1},
-                                {-1, -1, -1, -1, -1, -1,  0}};
+        double [][] defaultRoad = {{ 0, -1, -1, -1, -1, -1, -1},
+                                   {-1,  0, -1, -1, -1, -1, -1},
+                                   {-1, -1,  0, -1, -1, -1, -1},
+                                   {-1, -1, -1,  0, -1, -1, -1},
+                                   {-1, -1, -1, -1,  0, -1, -1},
+                                   {-1, -1, -1, -1, -1,  0, -1},
+                                   {-1, -1, -1, -1, -1, -1,  0}};
+        double [][] defaultAir  = {{ 0, -1, -1, -1, -1, -1, -1},
+                                   {-1,  0, -1, -1, -1, -1, -1},
+                                   {-1, -1,  0, -1, -1, -1, -1},
+                                   {-1, -1, -1,  0, -1, -1, -1},
+                                   {-1, -1, -1, -1,  0, -1, -1},
+                                   {-1, -1, -1, -1, -1,  0, -1},
+                                   {-1, -1, -1, -1, -1, -1,  0}};
         
         roadNetwork = defaultRoad;
         airNetwork  = defaultAir;
         
         prepTime = 3;           //  3 hours of preparation time
         
-        minDist = new int [7][7];
-        minType = new int [7][7];
+        minDist = new double [7][7];
+        minType = new int    [7][7];
     }
     
     //  recalculates the shortest distance between every pair of cities  
@@ -84,8 +84,7 @@ public class DataManager {
                         if(minType[i][k] != minType[k][j])
                             minType[i][j] = 2;
                         else
-                            minType[i][j] = minType[i][k];
-                        
+                            minType[i][j] = minType[i][k];                    
                     }
                 }
             }
@@ -103,12 +102,12 @@ public class DataManager {
     // </editor-fold>
     
     // <<editor-fold defaultstate="collapsed" desc="Distance Getters"> 
-    public int getRoadDist(int city1, int city2){
-        return this.roadNetwork[city1][city2];
+    public double getRoadDist(int city1, int city2){
+        return roadNetwork[city1][city2];
     }
     
-    public int getAirDist(int city1, int city2){
-        return this.airNetwork[city1][city2];
+    public double getAirDist(int city1, int city2){
+        return airNetwork[city1][city2];
     }
     // </editor-fold>   
     
