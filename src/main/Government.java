@@ -1,7 +1,7 @@
 package main;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
-
+import java.util.Random;
 /**
  *
  * @author Sony VAIO
@@ -45,6 +45,8 @@ int totalpercent=0;
         max = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         tot = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        AffectedCityText = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,6 +121,15 @@ int totalpercent=0;
 
         tot.setText("0%");
 
+        jButton1.setText("Start Simulation");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        AffectedCityText.setText("Affected: ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -136,7 +147,6 @@ int totalpercent=0;
                     .addGroup(layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Puerto)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -144,7 +154,13 @@ int totalpercent=0;
                                 .addGap(60, 60, 60)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tot)))))
+                                .addComponent(tot))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton1)
+                                    .addComponent(Puerto))
+                                .addGap(33, 33, 33)
+                                .addComponent(AffectedCityText)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(CDO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -216,7 +232,11 @@ int totalpercent=0;
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Davao)
                             .addComponent(Cagayan))
-                        .addGap(73, 73, 73))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton1)
+                            .addComponent(AffectedCityText))
+                        .addGap(23, 23, 23))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(TAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,6 +320,40 @@ int totalpercent=0;
         tot.setText(Integer.toString(totalpercent)+"%");
     }//GEN-LAST:event_CDOStateChanged
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        Random rand=new Random();
+        int randomNum = rand.nextInt((6) + 1) + 0;
+        if(randomNum==0){
+            AffectedCityText.setText("Affected: Manila");
+            max.setText(String.valueOf(maximum-(Integer) MNL.getValue())+"%");
+        }
+        else if(randomNum==1){
+            AffectedCityText.setText("Affected: Tacloban");
+            max.setText(String.valueOf(maximum-(Integer) TAC.getValue())+"%");
+        }
+        else if(randomNum==2){
+            AffectedCityText.setText("Affected: Cebu");
+            max.setText(String.valueOf(maximum-(Integer) CEB.getValue())+"%");
+        }
+        else if(randomNum==3){
+            AffectedCityText.setText("Affected: Davao");
+            max.setText(String.valueOf(maximum-(Integer) DAV.getValue())+"%");
+        }
+        else if(randomNum==4){
+            AffectedCityText.setText("Affected: Tuguegarao");
+            max.setText(String.valueOf(maximum-(Integer) TUG.getValue())+"%");
+        }
+        else if(randomNum==5){
+            AffectedCityText.setText("Affected: Puerto Princesa");
+            max.setText(String.valueOf(maximum-(Integer) PUE.getValue())+"%");
+        }
+        else if(randomNum==6){
+            AffectedCityText.setText("Affected: Cagayan de Oro");
+            max.setText(String.valueOf(maximum-(Integer) CDO.getValue())+"%");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -336,6 +390,7 @@ int totalpercent=0;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AffectedCityText;
     private javax.swing.JSpinner CDO;
     private javax.swing.JSpinner CEB;
     private javax.swing.JLabel Cagayan;
@@ -350,6 +405,7 @@ int totalpercent=0;
     private javax.swing.JSpinner TUG;
     private javax.swing.JLabel Tacloban;
     private javax.swing.JLabel Tuguegarao;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSpinner jSpinner7;
