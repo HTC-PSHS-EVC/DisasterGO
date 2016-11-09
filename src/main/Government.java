@@ -338,20 +338,54 @@ public class Government extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Random rand = new Random();
-        int totalScore = 9;
+        int totalScore = 0;
         
         for(int desCity = 0; desCity < 7; ++desCity){
             data = new DataManager();
             
+            data.setResDist(0, (Integer) MNL.getValue());
+            data.setResDist(1, (Integer) TUG.getValue());
+            data.setResDist(2, (Integer) TAC.getValue());
+            data.setResDist(3, (Integer) CEB.getValue());
+            data.setResDist(4, (Integer) DAV.getValue());
+            data.setResDist(5, (Integer) PUE.getValue());
+            data.setResDist(6, (Integer) CDO.getValue());
+            
             //  assume that the affected city's airport gets rekt
-            for(int otherCity = 0; otherCity < 7; ++otherCity)
-                if(otherCity != desCity)
-                    data.destAir(desCity, otherCity);
-            
             //  50% chance for each road leading to the city to get rekt
+            for(int otherCity = 0; otherCity < 7; ++otherCity){
+                if(otherCity != desCity){
+                    data.destAir(desCity, otherCity);
+                    data.destAir(otherCity, desCity);
+                    
+                    //if(rand.nextDouble() > 0.5){
+                    //    data.destRoad(desCity, otherCity);
+                    //    data.destRoad(otherCity, desCity);
+                    //}
+                }
+            }
             
+            //  recalculate shortest paths
+            data.calcNewDist();
+            data.calcAPSP();
+            
+            int score = 0;
+            
+            for(int otherCity = 0; otherCity < 7; ++otherCity){
+                if(otherCity != desCity && 
+                   data.getMinDist(desCity, otherCity) < 32){
+                    score += data.getResDist(otherCity);
+                    //System.out.print(Double.toString(data.getResDist(otherCity)) + " ");
+                }
+            }
+            
+            totalScore += score;
+            
+            System.out.println(Double.toString(totalScore));
+            //max.setText(Double.toString(data.getMinDist(, score)))
         }
         
+        max.setText(Double.toString(totalScore) + " ");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
