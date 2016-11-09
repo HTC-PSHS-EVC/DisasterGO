@@ -21,6 +21,10 @@ public class Hackathon extends javax.swing.JFrame {
         btn_survivor.setContentAreaFilled(false);
         btn_survivor.setBorderPainted(false);
         btn_survivor.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        exit.setOpaque(false);
+        exit.setContentAreaFilled(false);
+        exit.setBorderPainted(false);
+        exit.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -34,6 +38,7 @@ public class Hackathon extends javax.swing.JFrame {
 
         btn_government = new javax.swing.JButton();
         btn_survivor = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,6 +61,14 @@ public class Hackathon extends javax.swing.JFrame {
         getContentPane().add(btn_survivor);
         btn_survivor.setBounds(560, 560, 310, 70);
 
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(exit);
+        exit.setBounds(1260, 20, 73, 70);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/homeph SAME SIZE.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1370, 770);
@@ -72,6 +85,11 @@ public class Hackathon extends javax.swing.JFrame {
         new Survivor().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_survivor_onClick
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+         // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,6 +129,7 @@ public class Hackathon extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_government;
     private javax.swing.JButton btn_survivor;
+    private javax.swing.JButton exit;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
