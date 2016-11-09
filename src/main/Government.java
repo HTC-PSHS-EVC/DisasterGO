@@ -337,6 +337,10 @@ public class Government extends javax.swing.JFrame {
     }//GEN-LAST:event_CDOStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        sim1();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void sim1(){
         Random rand = new Random();
         int totalScore = 0;
         
@@ -373,7 +377,7 @@ public class Government extends javax.swing.JFrame {
             
             for(int otherCity = 0; otherCity < 7; ++otherCity){
                 if(otherCity != desCity && 
-                   data.getMinDist(desCity, otherCity) < 32){
+                   data.getMinDist(desCity, otherCity) < 24){
                     score += data.getResDist(otherCity);
                     //System.out.print(Double.toString(data.getResDist(otherCity)) + " ");
                 }
@@ -381,13 +385,13 @@ public class Government extends javax.swing.JFrame {
             
             totalScore += score;
             
-            System.out.println(Double.toString(totalScore));
+            System.out.println(Double.toString(score) + " " + Integer.toString(desCity));
             //max.setText(Double.toString(data.getMinDist(, score)))
         }
         
-        max.setText(Double.toString(totalScore) + " ");
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+        max.setText(Double.toString(totalScore/7.0) + " ");
+    }
+    
     /**
      * @param args the command line arguments
      */
