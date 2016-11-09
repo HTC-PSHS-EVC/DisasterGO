@@ -253,12 +253,6 @@ public class Government extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void startSim(){
-        data = new DataManager();
-        
-        
-    }
     
     private int getInputSum(){
         return (Integer) MNL.getValue() + (Integer) TAC.getValue() + 
@@ -343,36 +337,21 @@ public class Government extends javax.swing.JFrame {
     }//GEN-LAST:event_CDOStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Random rand=new Random();
-        int randomNum = rand.nextInt((6) + 1) + 0;
-        if(randomNum==0){
-            AffectedCityText.setText("Affected: Manila");
-            max.setText(String.valueOf(maximum-(Integer) MNL.getValue())+"%");
+        Random rand = new Random();
+        int totalScore = 9;
+        
+        for(int desCity = 0; desCity < 7; ++desCity){
+            data = new DataManager();
+            
+            //  assume that the affected city's airport gets rekt
+            for(int otherCity = 0; otherCity < 7; ++otherCity)
+                if(otherCity != desCity)
+                    data.destAir(desCity, otherCity);
+            
+            //  50% chance for each road leading to the city to get rekt
+            
         }
-        else if(randomNum==1){
-            AffectedCityText.setText("Affected: Tacloban");
-            max.setText(String.valueOf(maximum-(Integer) TAC.getValue())+"%");
-        }
-        else if(randomNum==2){
-            AffectedCityText.setText("Affected: Cebu");
-            max.setText(String.valueOf(maximum-(Integer) CEB.getValue())+"%");
-        }
-        else if(randomNum==3){
-            AffectedCityText.setText("Affected: Davao");
-            max.setText(String.valueOf(maximum-(Integer) DAV.getValue())+"%");
-        }
-        else if(randomNum==4){
-            AffectedCityText.setText("Affected: Tuguegarao");
-            max.setText(String.valueOf(maximum-(Integer) TUG.getValue())+"%");
-        }
-        else if(randomNum==5){
-            AffectedCityText.setText("Affected: Puerto Princesa");
-            max.setText(String.valueOf(maximum-(Integer) PUE.getValue())+"%");
-        }
-        else if(randomNum==6){
-            AffectedCityText.setText("Affected: Cagayan de Oro");
-            max.setText(String.valueOf(maximum-(Integer) CDO.getValue())+"%");
-        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
