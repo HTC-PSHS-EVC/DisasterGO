@@ -7,7 +7,9 @@ import javax.swing.JLabel;
  * @author Sony VAIO
  */
 public class Government extends javax.swing.JFrame {
-
+    
+    private DataManager data;
+    
     /**
      * Creates new form Government
      */
@@ -16,7 +18,7 @@ public class Government extends javax.swing.JFrame {
         max.setText(maximum+"%");
     }
     
-    private int maximum=100;
+    private int maximum = 100;
     private int totalpercent=0;
     
     /**
@@ -232,6 +234,12 @@ public class Government extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void startSim(){
+        data = new DataManager();
+        
+        
+    }
+    
     private int getInputSum(){
         return (Integer) MNL.getValue() + (Integer) TAC.getValue() + 
                (Integer) CEB.getValue() + (Integer) TUG.getValue() +

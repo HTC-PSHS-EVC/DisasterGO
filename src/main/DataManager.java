@@ -5,7 +5,7 @@ package main;
  * @author cesista
  */
 public class DataManager {
-    // <editor-fold defaultstate="collapsed" desc="Road Networks">  
+    // <editor-fold defaultstate="collapsed" desc="DATA">  
     private int [] resourceDist;
     
     private double [][] roadNetwork;
