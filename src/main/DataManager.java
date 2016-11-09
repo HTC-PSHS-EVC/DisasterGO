@@ -72,9 +72,9 @@ public class DataManager {
                     minDist[i][j] = airNetwork[i][j];
                     minType[i][j] = 1;
                 }
-                System.out.print(Double.toString(minDist[i][j]) + " ");
+                //System.out.print(Double.toString(minDist[i][j]) + " ");
             }
-            System.out.println();
+            //System.out.println();
         }
     }
     
@@ -100,13 +100,14 @@ public class DataManager {
                 }
             }
         }
-        
+        /*
         for(int i = 0; i < 7; ++i){
             for(int j = 0; j < 7; ++j){
                 System.out.print(Double.toString(minDist[i][j]) + " ");
             }
             System.out.println();
         }
+        */
     }
     
     // <<editor-fold defaultstate="collapsed" desc="get-set of Resource Distribution">
