@@ -337,6 +337,10 @@ public class Government extends javax.swing.JFrame {
     }//GEN-LAST:event_CDOStateChanged
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        sim1();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void sim1(){
         Random rand = new Random();
         int totalScore = 0;
         
@@ -386,8 +390,8 @@ public class Government extends javax.swing.JFrame {
         }
         
         max.setText(Double.toString(totalScore/7.0) + " ");
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
+    
     /**
      * @param args the command line arguments
      */
