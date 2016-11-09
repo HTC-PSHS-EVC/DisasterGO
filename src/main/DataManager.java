@@ -62,7 +62,7 @@ public class DataManager {
     }
     
     //  calculates the disaster forcast
-    public int [] calcDisForecast(int accuracy) {
+    public static int [] calcDisForecast(int accuracy) {
         int [] forecast = new int [7];
         for(int i = 0; i < 7; ++i)
             forecast[i] = 0;
