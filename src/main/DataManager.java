@@ -6,6 +6,8 @@ package main;
  */
 public class DataManager {
     // <editor-fold defaultstate="collapsed" desc="Road Networks">  
+    private int [] resourceDist;
+    
     private int [][] roadNetwork;
     private int [][] airNetwork;
     
@@ -19,6 +21,8 @@ public class DataManager {
     // </editor-fold> 
     
     public DataManager() {
+        resourceDist = new int[7];
+        
         int [][] defaultRoad = {{ 0, -1, -1, -1, -1, -1, -1},
                                 {-1,  0, -1, -1, -1, -1, -1},
                                 {-1, -1,  0, -1, -1, -1, -1},
@@ -73,20 +77,30 @@ public class DataManager {
                     
                     if(minDist[i][k] != -1 &&
                        minDist[k][j] != -1 &&
-                       minDist[i][k] + minDist[k][j] + prepTime < minDist[i][j]){
+                       minDist[i][k]+minDist[k][j] + prepTime < minDist[i][j]){
                         
-                        minDist[i][j] = minDist[i][k] + minDist[k][j] + prepTime;
+                        minDist[i][j] = minDist[i][k]+minDist[k][j] + prepTime;
                         
-                        if(minType[i][k] != minType[k][j]){
+                        if(minType[i][k] != minType[k][j])
                             minType[i][j] = 2;
-                        }else{
+                        else
                             minType[i][j] = minType[i][k];
-                        }
+                        
                     }
                 }
             }
         }
     }
+    
+    // <<editor-fold defaultstate="collapsed" desc="get-set of Resource Distribution">
+    int getResDist(int city){
+        return resourceDist[city];
+    }
+    
+    void setResDist(int city, int value){
+        resourceDist[city] = value;
+    }
+    // </editor-fold>
     
     // <<editor-fold defaultstate="collapsed" desc="Distance Getters"> 
     public int getRoadDist(int city1, int city2){
