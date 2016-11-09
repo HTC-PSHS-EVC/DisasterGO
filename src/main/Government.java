@@ -15,8 +15,10 @@ public class Government extends javax.swing.JFrame {
         initComponents();
         max.setText(maximum+"%");
     }
-int maximum=100;
-int totalpercent=0;
+    
+    private int maximum=100;
+    private int totalpercent=0;
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -230,74 +232,86 @@ int totalpercent=0;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private int getInputSum(){
+        return (Integer) MNL.getValue() + (Integer) TAC.getValue() + 
+               (Integer) CEB.getValue() + (Integer) TUG.getValue() +
+               (Integer) PUE.getValue() + (Integer) CDO.getValue() + 
+               (Integer) DAV.getValue();
+    }
+    
     private void MNLStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MNLStateChanged
-        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
-        // TODO add your handling code here:
-        if(totalpercent>maximum){
-            JOptionPane.showMessageDialog(null,"Maximum Percentage Exceeded");
+        totalpercent = getInputSum();
+        
+        if(totalpercent > maximum) {
+            JOptionPane.showMessageDialog(null, "Maximum Percentage Exceeded");
             MNL.setValue(MNL.getPreviousValue());
         }
-        tot.setText(Integer.toString(totalpercent)+"%");
+        
+        tot.setText(Integer.toString(totalpercent) + "%");
     }//GEN-LAST:event_MNLStateChanged
 
     private void TUGStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TUGStateChanged
-        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
-        if(totalpercent>maximum){
-            JOptionPane.showMessageDialog(null,"Maximum Percentage Exceeded");
+        totalpercent = getInputSum();
+        
+        if(totalpercent > maximum) {
+            JOptionPane.showMessageDialog(null, "Maximum Percentage Exceeded");
             TUG.setValue(TUG.getPreviousValue());
         }
-        tot.setText(Integer.toString(totalpercent)+"%");
-// TODO add your handling code here:
+        
+        tot.setText(Integer.toString(totalpercent) + "%");
     }//GEN-LAST:event_TUGStateChanged
 
     private void CEBStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_CEBStateChanged
-        // TODO add your handling code here:
-        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
-        if(totalpercent>maximum){
-            JOptionPane.showMessageDialog(null,"Maximum Percentage Exceeded");
+        totalpercent = getInputSum();
+        
+        if(totalpercent > maximum) {
+            JOptionPane.showMessageDialog(null, "Maximum Percentage Exceeded");
             CEB.setValue(CEB.getPreviousValue());
         }
-        tot.setText(Integer.toString(totalpercent)+"%");
+        
+        tot.setText(Integer.toString(totalpercent) + "%");
     }//GEN-LAST:event_CEBStateChanged
 
     private void TACStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TACStateChanged
-        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
-        if(totalpercent>maximum){
-            JOptionPane.showMessageDialog(null,"Maximum Percentage Exceeded");
+        totalpercent = getInputSum();
+        
+        if(totalpercent > maximum){
+            JOptionPane.showMessageDialog(null, "Maximum Percentage Exceeded");
             TAC.setValue(TAC.getPreviousValue());
         }
-        tot.setText(Integer.toString(totalpercent)+"%");
-// TODO add your handling code here:
+        
+        tot.setText(Integer.toString(totalpercent) + "%");
     }//GEN-LAST:event_TACStateChanged
 
     private void PUEStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_PUEStateChanged
-        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
-        if(totalpercent>maximum){
-            JOptionPane.showMessageDialog(null,"Maximum Percentage Exceeded");
+        totalpercent = getInputSum();
+        
+        if(totalpercent > maximum) {
+            JOptionPane.showMessageDialog(null, "Maximum Percentage Exceeded");
             PUE.setValue(PUE.getPreviousValue());
         }
-        tot.setText(Integer.toString(totalpercent)+"%");
-// TODO add your handling code here:
+        
+        tot.setText(Integer.toString(totalpercent) + "%");
     }//GEN-LAST:event_PUEStateChanged
 
     private void DAVStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_DAVStateChanged
-        // TODO add your handling code here:
-        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
-        if(totalpercent>maximum){
-            JOptionPane.showMessageDialog(null,"Maximum Percentage Exceeded");
+        totalpercent = getInputSum();
+        
+        if(totalpercent > maximum) {
+            JOptionPane.showMessageDialog(null, "Maximum Percentage Exceeded");
             DAV.setValue(DAV.getPreviousValue());
         }
-        tot.setText(Integer.toString(totalpercent)+"%");
+        tot.setText(Integer.toString(totalpercent) + "%");
     }//GEN-LAST:event_DAVStateChanged
 
     private void CDOStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_CDOStateChanged
-        // TODO add your handling code here:
-        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
-        if(totalpercent>maximum){
-            JOptionPane.showMessageDialog(null,"Maximum Percentage Exceeded");
+        totalpercent = getInputSum();
+        
+        if(totalpercent > maximum) {
+            JOptionPane.showMessageDialog(null, "Maximum Percentage Exceeded");
             CDO.setValue(CDO.getPreviousValue());
         }
-        tot.setText(Integer.toString(totalpercent)+"%");
+        tot.setText(Integer.toString(totalpercent) + "%");
     }//GEN-LAST:event_CDOStateChanged
 
     /**
