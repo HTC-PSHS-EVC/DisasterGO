@@ -5,6 +5,8 @@
  */
 package main;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author Sony VAIO
@@ -16,8 +18,10 @@ public class Government extends javax.swing.JFrame {
      */
     public Government() {
         initComponents();
+        max.setText(maximum+"%");
     }
-
+int maximum=100;
+int totalpercent=0;
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -43,9 +47,9 @@ public class Government extends javax.swing.JFrame {
         CDO = new javax.swing.JSpinner();
         PUE = new javax.swing.JSpinner();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        max = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        tot = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,26 +68,61 @@ public class Government extends javax.swing.JFrame {
         Tacloban.setText("Tacloban");
 
         MNL.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
+        MNL.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                MNLStateChanged(evt);
+            }
+        });
 
         TUG.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
+        TUG.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TUGStateChanged(evt);
+            }
+        });
 
         TAC.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
+        TAC.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                TACStateChanged(evt);
+            }
+        });
 
         CEB.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
+        CEB.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                CEBStateChanged(evt);
+            }
+        });
 
         DAV.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
+        DAV.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                DAVStateChanged(evt);
+            }
+        });
 
         CDO.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
+        CDO.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                CDOStateChanged(evt);
+            }
+        });
 
         PUE.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
+        PUE.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                PUEStateChanged(evt);
+            }
+        });
 
         jLabel1.setText("Maximum: ");
 
-        jLabel2.setText("100%");
+        max.setText("100%");
 
         jLabel3.setText("Total:");
 
-        jLabel4.setText("jLabel4");
+        tot.setText("0%");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -106,42 +145,44 @@ public class Government extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel2)
+                                .addComponent(max)
                                 .addGap(60, 60, 60)
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel4)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
-                .addComponent(CDO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(200, 200, 200))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Cebu)
-                    .addComponent(CEB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(24, 24, 24)
+                                .addComponent(tot)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Cagayan)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Tuguegarao)
-                                .addGap(8, 8, 8))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(TUG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(69, 69, 69)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(TAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(Tacloban)))))
-                .addGap(106, 106, 106))
+                    .addComponent(CDO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(Cagayan)))
+                .addGap(200, 200, 200))
             .addGroup(layout.createSequentialGroup()
                 .addGap(270, 270, 270)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(MNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Manila))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CEB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(61, 61, 61)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(Tuguegarao)
+                                .addGap(8, 8, 8))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(19, 19, 19)
+                                .addComponent(TUG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Cebu)
+                        .addGap(92, 92, 92)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Tacloban))))
+                .addGap(106, 106, 106))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,9 +190,9 @@ public class Government extends javax.swing.JFrame {
                 .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jLabel2)
+                    .addComponent(max)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(tot))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -165,12 +206,10 @@ public class Government extends javax.swing.JFrame {
                         .addComponent(Manila)
                         .addGap(39, 39, 39)
                         .addComponent(CEB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PUE, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Cebu)
-                                .addGap(14, 14, 14)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Cebu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                        .addComponent(PUE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -179,13 +218,10 @@ public class Government extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(Puerto)
                                 .addGap(51, 51, 51)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Davao)
-                                .addGap(73, 73, 73))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Cagayan)
-                                .addGap(65, 65, 65))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Davao)
+                            .addComponent(Cagayan))
+                        .addGap(73, 73, 73))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(TAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -198,6 +234,48 @@ public class Government extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void MNLStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MNLStateChanged
+        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
+        // TODO add your handling code here:
+        tot.setText(Integer.toString(totalpercent)+"%");
+    }//GEN-LAST:event_MNLStateChanged
+
+    private void TUGStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TUGStateChanged
+        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
+        tot.setText(Integer.toString(totalpercent)+"%");
+// TODO add your handling code here:
+    }//GEN-LAST:event_TUGStateChanged
+
+    private void CEBStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_CEBStateChanged
+        // TODO add your handling code here:
+        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
+        tot.setText(Integer.toString(totalpercent)+"%");
+    }//GEN-LAST:event_CEBStateChanged
+
+    private void TACStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_TACStateChanged
+        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
+        tot.setText(Integer.toString(totalpercent)+"%");
+// TODO add your handling code here:
+    }//GEN-LAST:event_TACStateChanged
+
+    private void PUEStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_PUEStateChanged
+        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
+        tot.setText(Integer.toString(totalpercent)+"%");
+// TODO add your handling code here:
+    }//GEN-LAST:event_PUEStateChanged
+
+    private void DAVStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_DAVStateChanged
+        // TODO add your handling code here:
+        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
+        tot.setText(Integer.toString(totalpercent)+"%");
+    }//GEN-LAST:event_DAVStateChanged
+
+    private void CDOStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_CDOStateChanged
+        // TODO add your handling code here:
+        totalpercent=(Integer) MNL.getValue()+(Integer) TAC.getValue()+(Integer) CEB.getValue()+(Integer) TUG.getValue()+(Integer) PUE.getValue()+(Integer) CDO.getValue()+(Integer) DAV.getValue();
+        tot.setText(Integer.toString(totalpercent)+"%");
+    }//GEN-LAST:event_CDOStateChanged
 
     /**
      * @param args the command line arguments
@@ -250,9 +328,9 @@ public class Government extends javax.swing.JFrame {
     private javax.swing.JLabel Tacloban;
     private javax.swing.JLabel Tuguegarao;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JSpinner jSpinner7;
+    private javax.swing.JLabel max;
+    private javax.swing.JLabel tot;
     // End of variables declaration//GEN-END:variables
 }
