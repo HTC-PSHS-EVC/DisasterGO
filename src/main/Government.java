@@ -392,6 +392,23 @@ public class Government extends javax.swing.JFrame {
         max.setText(Double.toString(totalScore/7.0) + " ");
     }
     
+    int [] getDisasterForecast(){
+        int [] desCity = new int [10];
+        
+        for(int i = 0; i < 10; ++i){
+            Random rn = new Random();
+            int num = rn.nextInt(7);
+            desCity[i] = num;
+        }
+        
+        int [] occur = new int[7];
+        for(int i = 0; i < 10; ++i){
+            occur[desCity[i]]++;
+        }
+        
+        return occur;
+    }
+    
     /**
      * @param args the command line arguments
      */
