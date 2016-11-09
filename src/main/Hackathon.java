@@ -1,5 +1,7 @@
 package main;
 
+import java.awt.Cursor;
+
 /**
  *
  * @author cesista
@@ -11,6 +13,18 @@ public class Hackathon extends javax.swing.JFrame {
      */
     public Hackathon() {
         initComponents();
+        btn_government.setOpaque(false);
+        btn_government.setContentAreaFilled(false);
+        btn_government.setBorderPainted(false);
+        btn_government.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        btn_survivor.setOpaque(false);
+        btn_survivor.setContentAreaFilled(false);
+        btn_survivor.setBorderPainted(false);
+        btn_survivor.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        exit.setOpaque(false);
+        exit.setContentAreaFilled(false);
+        exit.setBorderPainted(false);
+        exit.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -24,43 +38,40 @@ public class Hackathon extends javax.swing.JFrame {
 
         btn_government = new javax.swing.JButton();
         btn_survivor = new javax.swing.JButton();
+        exit = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1366, 768));
+        getContentPane().setLayout(null);
 
-        btn_government.setText("Government");
         btn_government.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_government_onClick(evt);
             }
         });
+        getContentPane().add(btn_government);
+        btn_government.setBounds(560, 640, 310, 60);
 
-        btn_survivor.setText("Survivor");
         btn_survivor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_survivor_onClick(evt);
             }
         });
+        getContentPane().add(btn_survivor);
+        btn_survivor.setBounds(560, 560, 310, 70);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_government, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_survivor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(267, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(199, Short.MAX_VALUE)
-                .addComponent(btn_government)
-                .addGap(35, 35, 35)
-                .addComponent(btn_survivor)
-                .addGap(113, 113, 113))
-        );
+        exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitActionPerformed(evt);
+            }
+        });
+        getContentPane().add(exit);
+        exit.setBounds(1260, 20, 73, 70);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/homeph SAME SIZE.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 1370, 770);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -74,6 +85,11 @@ public class Hackathon extends javax.swing.JFrame {
         new Survivor().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_survivor_onClick
+
+    private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed
+         // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_exitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,5 +129,7 @@ public class Hackathon extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_government;
     private javax.swing.JButton btn_survivor;
+    private javax.swing.JButton exit;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
