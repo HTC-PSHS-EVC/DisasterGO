@@ -1,5 +1,7 @@
 package main;
 
+import java.util.Random;
+
 /**
  *
  * @author cesista
@@ -57,6 +59,20 @@ public class DataManager {
         
         //calcNewDist();
         //calcAPSP();
+    }
+    
+    //  calculates the disaster forcast
+    public static int [] calcDisForecast(int accuracy) {
+        int [] forecast = new int [7];
+        for(int i = 0; i < 7; ++i)
+            forecast[i] = 0;
+        
+        for(int i = 0; i < accuracy; ++i){
+            Random rn = new Random();
+            forecast[rn.nextInt(7)]++;
+        }
+        
+        return forecast;
     }
     
     //  recalculates the shortest distance between every pair of cities  
