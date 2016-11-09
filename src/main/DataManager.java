@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package main;
 
 /**
@@ -13,6 +8,8 @@ public class DataManager {
     // <editor-fold defaultstate="collapsed" desc="Road Networks">  
     private int [][] roadNetwork;
     private int [][] airNetwork;
+    
+    private int prepTime;
     
     private int [][] minDist;
     private int [][] minType;       // -1 -> empty
@@ -37,11 +34,13 @@ public class DataManager {
                                 {-1, -1, -1, -1, -1,  0, -1},
                                 {-1, -1, -1, -1, -1, -1,  0}};
         
-        this.roadNetwork = defaultRoad;
-        this.airNetwork  = defaultAir;
+        roadNetwork = defaultRoad;
+        airNetwork  = defaultAir;
         
-        this.minDist = new int [7][7];
-        this.minType     = new int [7][7];
+        prepTime = 3;           //  3 hours of preparation time
+        
+        minDist = new int [7][7];
+        minType = new int [7][7];
     }
     
     //  recalculates the shortest distance between every pair of cities  
@@ -74,9 +73,9 @@ public class DataManager {
                     
                     if(minDist[i][k] != -1 &&
                        minDist[k][j] != -1 &&
-                       minDist[i][k] + minDist[k][j] < minDist[i][j]){
+                       minDist[i][k] + minDist[k][j] + prepTime < minDist[i][j]){
                         
-                        minDist[i][j] = minDist[i][k] + minDist[k][j];
+                        minDist[i][j] = minDist[i][k] + minDist[k][j] + prepTime;
                         
                         if(minType[i][k] != minType[k][j]){
                             minType[i][j] = 2;
@@ -100,11 +99,11 @@ public class DataManager {
     // </editor-fold>   
     
     // <<editor-fold defaultstate="collapsed" desc="Path Destroyers"> 
-    public void destroyRoad(int city1, int city2){
+    public void destRoad(int city1, int city2){
         roadNetwork[city1][city2] = -1;
     }
     
-    public void destroyAir(int city1, int city2){
+    public void destAir(int city1, int city2){
         airNetwork[city1][city2] = -1;
     }   
     // </editor-fold>
