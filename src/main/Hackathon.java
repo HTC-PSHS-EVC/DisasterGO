@@ -29,15 +29,15 @@ public class Hackathon extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        btn_portal_Government = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Government");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btn_portal_Government.setText("Government");
+        btn_portal_Government.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_portal_GovernmentActionPerformed(evt);
             }
         });
 
@@ -50,7 +50,7 @@ public class Hackathon extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(237, 237, 237)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_portal_Government, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(267, Short.MAX_VALUE))
         );
@@ -58,7 +58,7 @@ public class Hackathon extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(199, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(btn_portal_Government)
                 .addGap(35, 35, 35)
                 .addComponent(jButton2)
                 .addGap(113, 113, 113))
@@ -67,11 +67,11 @@ public class Hackathon extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btn_portal_GovernmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_portal_GovernmentActionPerformed
         // TODO add your handling code here:
         new Government().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn_portal_GovernmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,7 +109,7 @@ public class Hackathon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_portal_Government;
     private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 }
