@@ -29,19 +29,24 @@ public class Hackathon extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_portal_Government = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_government = new javax.swing.JButton();
+        btn_survivor = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btn_portal_Government.setText("Government");
-        btn_portal_Government.addActionListener(new java.awt.event.ActionListener() {
+        btn_government.setText("Government");
+        btn_government.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_portal_GovernmentActionPerformed(evt);
+                btn_government_onClick(evt);
             }
         });
 
-        jButton2.setText("Survivor");
+        btn_survivor.setText("Survivor");
+        btn_survivor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_survivor_onClick(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -50,28 +55,32 @@ public class Hackathon extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(237, 237, 237)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_portal_Government, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btn_government, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_survivor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(267, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(199, Short.MAX_VALUE)
-                .addComponent(btn_portal_Government)
+                .addComponent(btn_government)
                 .addGap(35, 35, 35)
-                .addComponent(jButton2)
+                .addComponent(btn_survivor)
                 .addGap(113, 113, 113))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btn_portal_GovernmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_portal_GovernmentActionPerformed
-        // TODO add your handling code here:
+    private void btn_government_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_government_onClick
         new Government().setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btn_portal_GovernmentActionPerformed
+    }//GEN-LAST:event_btn_government_onClick
+
+    private void btn_survivor_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_survivor_onClick
+        new Survivor().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btn_survivor_onClick
 
     /**
      * @param args the command line arguments
@@ -109,7 +118,7 @@ public class Hackathon extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_portal_Government;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_government;
+    private javax.swing.JButton btn_survivor;
     // End of variables declaration//GEN-END:variables
 }
