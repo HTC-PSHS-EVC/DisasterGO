@@ -16,6 +16,8 @@ public class Disaster extends javax.swing.JFrame {
      */
     public Disaster() {
         initComponents();
+        //Disaster disFrame = new Disaster();
+        this.setAlwaysOnTop(true);
     }
 
     /**
@@ -29,7 +31,7 @@ public class Disaster extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(400, 225));
+        setPreferredSize(new java.awt.Dimension(420, 245));
         getContentPane().setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/start notif.png"))); // NOI18N
@@ -66,11 +68,12 @@ public class Disaster extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Disaster().setVisible(true);
+                
             }
         });
     }

@@ -25,6 +25,10 @@ public class Hackathon extends javax.swing.JFrame {
         exit.setContentAreaFilled(false);
         exit.setBorderPainted(false);
         exit.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButton1.setOpaque(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setBorderPainted(false);
+        jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -39,6 +43,7 @@ public class Hackathon extends javax.swing.JFrame {
         btn_government = new javax.swing.JButton();
         btn_survivor = new javax.swing.JButton();
         exit = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,6 +74,14 @@ public class Hackathon extends javax.swing.JFrame {
         getContentPane().add(exit);
         exit.setBounds(1260, 20, 73, 70);
 
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(1190, 670, 33, 90);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/homeph SAME SIZE.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1370, 770);
@@ -82,7 +95,7 @@ public class Hackathon extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_government_onClick
 
     private void btn_survivor_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_survivor_onClick
-        new Survivor().setVisible(true);
+        new HelpV().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_survivor_onClick
 
@@ -90,6 +103,11 @@ public class Hackathon extends javax.swing.JFrame {
          // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_exitActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new HelpG().setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -130,6 +148,7 @@ public class Hackathon extends javax.swing.JFrame {
     private javax.swing.JButton btn_government;
     private javax.swing.JButton btn_survivor;
     private javax.swing.JButton exit;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

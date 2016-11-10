@@ -29,6 +29,7 @@ public class HelpG extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1148, 765));
         getContentPane().setLayout(null);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/help victims.png"))); // NOI18N

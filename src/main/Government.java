@@ -22,6 +22,7 @@ public class Government extends javax.swing.JFrame {
         
         initDisasterForecast();
         
+        new Disaster().setVisible(true);
         start.setOpaque(false);
         start.setContentAreaFilled(false);
         start.setBorderPainted(false);
@@ -191,6 +192,12 @@ public class Government extends javax.swing.JFrame {
         });
         getContentPane().add(PUE);
         PUE.setBounds(77, 480, 70, 30);
+
+        help.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                helpActionPerformed(evt);
+            }
+        });
         getContentPane().add(help);
         help.setBounds(520, 680, 60, 60);
 
@@ -285,8 +292,14 @@ public class Government extends javax.swing.JFrame {
         });
         getContentPane().add(roads);
         roads.setBounds(10, 650, 120, 40);
+
+        plane.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                planeActionPerformed(evt);
+            }
+        });
         getContentPane().add(plane);
-        plane.setBounds(380, 50, 80, 50);
+        plane.setBounds(370, 50, 80, 50);
 
         jLabel2.setFont(new java.awt.Font("Paul Grotesk -Trail", 0, 11)); // NOI18N
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mainph NO ROADS.png"))); // NOI18N
@@ -407,6 +420,7 @@ public class Government extends javax.swing.JFrame {
     
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
         sim1();
+        new Efficiency().setVisible(true);
     }//GEN-LAST:event_startActionPerformed
 
     private void roadsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roadsActionPerformed
@@ -427,6 +441,16 @@ public class Government extends javax.swing.JFrame {
             Danger.setValue(Danger.getPreviousValue());
         }
     }//GEN-LAST:event_DangerStateChanged
+
+    private void planeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_planeActionPerformed
+        // TODO add your handling code here:
+        new Planes().setVisible(true);
+    }//GEN-LAST:event_planeActionPerformed
+
+    private void helpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpActionPerformed
+        // TODO add your handling code here:
+        new HelpG().setVisible(true);
+    }//GEN-LAST:event_helpActionPerformed
 
     private void sim1(){
         int totalScore = 0;

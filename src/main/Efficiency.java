@@ -16,6 +16,8 @@ public class Efficiency extends javax.swing.JFrame {
      */
     public Efficiency() {
         initComponents();
+        
+        this.setAlwaysOnTop(true);
     }
 
     /**
