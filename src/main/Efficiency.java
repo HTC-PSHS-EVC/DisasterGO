@@ -5,6 +5,8 @@
  */
 package main;
 
+import java.awt.Cursor;
+
 /**
  *
  * @author george a. cayas
@@ -16,8 +18,12 @@ public class Efficiency extends javax.swing.JFrame {
      */
     public Efficiency() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
         this.setAlwaysOnTop(true);
+        jButton1.setOpaque(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.setBorderPainted(false);
+        jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     /**
@@ -29,16 +35,39 @@ public class Efficiency extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(1148, 775));
         getContentPane().setLayout(null);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/start notif.png"))); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Luna", 0, 90)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("0");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(750, 220, 280, 290);
+
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(40, 640, 80, 90);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/score.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 400, 220);
+        jLabel1.setBounds(0, 0, 1150, 765);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new Hackathon().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,6 +108,8 @@ public class Efficiency extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    public javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

@@ -13,6 +13,7 @@ public class Hackathon extends javax.swing.JFrame {
      */
     public Hackathon() {
         initComponents();
+        this.setLocationRelativeTo(null);
         btn_government.setOpaque(false);
         btn_government.setContentAreaFilled(false);
         btn_government.setBorderPainted(false);
@@ -96,7 +97,6 @@ public class Hackathon extends javax.swing.JFrame {
 
     private void btn_survivor_onClick(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_survivor_onClick
         new HelpV().setVisible(true);
-        this.dispose();
     }//GEN-LAST:event_btn_survivor_onClick
 
     private void exitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitActionPerformed

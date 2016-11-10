@@ -21,8 +21,8 @@ public class Government extends javax.swing.JFrame {
         initComponents();
         
         initDisasterForecast();
+        this.setLocationRelativeTo(null);
         
-        new Disaster().setVisible(true);
         start.setOpaque(false);
         start.setContentAreaFilled(false);
         start.setBorderPainted(false);
@@ -41,6 +41,9 @@ public class Government extends javax.swing.JFrame {
         plane.setCursor(new Cursor(Cursor.HAND_CURSOR));
         
         max.setText(maximum+"%");
+        
+        Disaster dis = new Disaster();
+        dis.setVisible(true);
     }
     
     private int maximum = 100;
@@ -419,8 +422,11 @@ public class Government extends javax.swing.JFrame {
     // </editor-fold> 
     
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
-        sim1();
-        new Efficiency().setVisible(true);
+        int effic = sim1();
+        Efficiency eff = new Efficiency();
+        eff.setVisible(true);
+        eff.jLabel2.setText(Integer.toString(effic));
+        this.dispose();
     }//GEN-LAST:event_startActionPerformed
 
     private void roadsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roadsActionPerformed
@@ -452,7 +458,7 @@ public class Government extends javax.swing.JFrame {
         new HelpG().setVisible(true);
     }//GEN-LAST:event_helpActionPerformed
 
-    private void sim1(){
+    private int sim1(){
         int totalScore = 0;
         
         for(int desCity = 0; desCity < 7; ++desCity){
@@ -465,6 +471,7 @@ public class Government extends javax.swing.JFrame {
         double ave = (totalScore/7.0);
         
         max.setText( Integer.toString((int) ave) + "%" );
+        return (int) ave;
     }
     
     private void sim2(){
