@@ -27,12 +27,12 @@ public class DataManager {
     public DataManager() {
         resourceDist = new int[7];
         
-        double [][] defaultRoad = {{  0, 12, 24, 14,INF, 32,INF},
+        double [][] defaultRoad = {{  0, 12, 24, 14,INF, 24,INF},
                                    { 12,  0,INF,INF,INF,INF,INF},
                                    { 24,INF,  0,  6, 10,INF,INF},
                                    { 14,INF,  6,  0,INF,INF,INF},
                                    {INF,INF, 10,INF,  0,INF,  7},
-                                   { 32,INF,INF,INF,INF,  0,INF},
+                                   { 24,INF,INF,INF,INF,  0,INF},
                                    {INF,INF,INF,INF,  7,INF,  0}};
         double [][] defaultAir  = {{0   , 1.75, 1.75, 1.75, 2   , 1.5 , 2   },
                                    {1.75,    0, 4.25, 5.5 , 5   , 4   , 4.25},
@@ -136,7 +136,7 @@ public class DataManager {
     }
     // </editor-fold>
     
-    // <<editor-fold defaultstate="collapsed" desc="Distance Getters"> 
+    // <<editor-fold defaultstate="collapsed" desc="Distance get-delay"> 
     public double getRoadDist(int city1, int city2){
         return roadNetwork[city1][city2];
     }
@@ -147,6 +147,10 @@ public class DataManager {
     
     public double getMinDist(int city1, int city2){
         return minDist[city1][city2];
+    }
+    
+    public void delayRoad(int city1, int city2, double delay){
+        roadNetwork[city1][city2] += delay;
     }
     // </editor-fold>   
     

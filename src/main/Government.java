@@ -12,6 +12,7 @@ public class Government extends javax.swing.JFrame {
     
     private DataManager data;
     private int [] disasterForecast;
+    private int danger = 25;
     
     /**
      * Creates new form Government
@@ -69,7 +70,9 @@ public class Government extends javax.swing.JFrame {
         CDO = new javax.swing.JSpinner();
         PUE = new javax.swing.JSpinner();
         help = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        Danger = new javax.swing.JSpinner();
         max = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         per_TAC = new javax.swing.JLabel();
@@ -85,6 +88,7 @@ public class Government extends javax.swing.JFrame {
         plane = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        tot1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 780));
@@ -188,22 +192,36 @@ public class Government extends javax.swing.JFrame {
         getContentPane().add(PUE);
         PUE.setBounds(77, 480, 70, 30);
         getContentPane().add(help);
-        help.setBounds(510, 680, 33, 60);
+        help.setBounds(520, 680, 60, 60);
+
+        jLabel5.setFont(new java.awt.Font("Bebas", 0, 18)); // NOI18N
+        jLabel5.setText("DangeR: ");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(20, 60, 80, 25);
 
         jLabel1.setFont(new java.awt.Font("Bebas", 0, 18)); // NOI18N
-        jLabel1.setText("Maximum: ");
+        jLabel1.setText("Efficiency:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 20, 80, 25);
+        jLabel1.setBounds(20, 20, 90, 25);
+
+        Danger.setValue(25);
+        Danger.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                DangerStateChanged(evt);
+            }
+        });
+        getContentPane().add(Danger);
+        Danger.setBounds(90, 60, 60, 30);
 
         max.setFont(new java.awt.Font("Bebas", 0, 18)); // NOI18N
         max.setText("100%");
         getContentPane().add(max);
-        max.setBounds(110, 20, 90, 25);
+        max.setBounds(120, 20, 90, 25);
 
         jLabel3.setFont(new java.awt.Font("Bebas", 0, 18)); // NOI18N
         jLabel3.setText("Total:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 50, 49, 25);
+        jLabel3.setBounds(20, 100, 49, 25);
 
         per_TAC.setFont(new java.awt.Font("Bebas", 0, 14)); // NOI18N
         per_TAC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -250,7 +268,7 @@ public class Government extends javax.swing.JFrame {
         tot.setFont(new java.awt.Font("Bebas", 0, 18)); // NOI18N
         tot.setText("0%");
         getContentPane().add(tot);
-        tot.setBounds(80, 50, 50, 25);
+        tot.setBounds(80, 100, 50, 25);
 
         start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -277,7 +295,12 @@ public class Government extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mainph SMALL.png"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 4, 600, 750);
+        jLabel4.setBounds(0, 0, 600, 750);
+
+        tot1.setFont(new java.awt.Font("Bebas", 0, 18)); // NOI18N
+        tot1.setText("0%");
+        getContentPane().add(tot1);
+        tot1.setBounds(80, 50, 50, 25);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -285,6 +308,7 @@ public class Government extends javax.swing.JFrame {
     private void initDisasterForecast(){
         disasterForecast = DataManager.calcDisForecast(100);
         
+        // <editor-fold defaultstate="collapsed" desc="setText disaster forecasts">  
         per_MAN.setText(Integer.toString(disasterForecast[0]) + "%");
         per_TUG.setText(Integer.toString(disasterForecast[1]) + "%");
         per_TAC.setText(Integer.toString(disasterForecast[2]) + "%");
@@ -292,6 +316,7 @@ public class Government extends javax.swing.JFrame {
         per_DAV.setText(Integer.toString(disasterForecast[4]) + "%");
         per_PUE.setText(Integer.toString(disasterForecast[5]) + "%");
         per_CDO.setText(Integer.toString(disasterForecast[6]) + "%");
+        // </editor-fold> 
     }
     
     private int getInputSum(){
@@ -385,12 +410,25 @@ public class Government extends javax.swing.JFrame {
     }//GEN-LAST:event_startActionPerformed
 
     private void roadsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roadsActionPerformed
-        // TODO add your handling code here:
-        jLabel2.setVisible(false);
+        if(jLabel2.isVisible()){
+            jLabel2.setVisible(false);
+            plane.setEnabled(true);
+        }else{
+            jLabel2.setVisible(true);
+            plane.setEnabled(false);
+        }
     }//GEN-LAST:event_roadsActionPerformed
 
+    private void DangerStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_DangerStateChanged
+        danger = (Integer) Danger.getValue();
+        
+        if(danger > 100) {
+            JOptionPane.showMessageDialog(null, "Maximum Danger! Exceeded");
+            Danger.setValue(Danger.getPreviousValue());
+        }
+    }//GEN-LAST:event_DangerStateChanged
+
     private void sim1(){
-        Random rand = new Random();
         int totalScore = 0;
         
         for(int desCity = 0; desCity < 7; ++desCity){
@@ -400,7 +438,9 @@ public class Government extends javax.swing.JFrame {
             //max.setText(Double.toString(data.getMinDist(, score)))
         }
         
-        max.setText(Double.toString(totalScore/7.0));
+        double ave = (totalScore/7.0);
+        
+        max.setText( Integer.toString((int) ave) + "%" );
     }
     
     private void sim2(){
@@ -429,15 +469,26 @@ public class Government extends javax.swing.JFrame {
         
         //  assume that the affected city's airport gets rekt
         //  50% chance for each road leading to the city to get rekt
-        for(int otherCity = 0; otherCity < 7; ++otherCity){
-            if(otherCity != desCity){
+        for(int otherCity = 0; otherCity < 7; ++otherCity) {
+            if(otherCity != desCity) {
                 data.destAir(desCity, otherCity);
                 data.destAir(otherCity, desCity);
-
-                //if(rand.nextDouble() > 0.5){
-                //    data.destRoad(desCity, otherCity);
-                //    data.destRoad(otherCity, desCity);
-                //}
+                
+                Random ran = new Random();
+                
+                //  25% of other roads got semi-rekt
+                if(ran.nextDouble() < danger / 100.0) {
+                    int cityA = ran.nextInt(7);
+                    int cityB = ran.nextInt(7);
+                    data.delayRoad(cityA, cityB, ran.nextDouble() * 5);
+                    data.delayRoad(cityB, cityA, ran.nextDouble() * 5);
+                }
+                
+                //  25% of roads got rekt
+                if(ran.nextDouble() < danger / 100.0) {
+                    data.destRoad(desCity, otherCity);
+                    data.destRoad(otherCity, desCity);
+                }
             }
         }
 
@@ -449,12 +500,12 @@ public class Government extends javax.swing.JFrame {
         
         for(int otherCity = 0; otherCity < 7; ++otherCity){
             if(otherCity != desCity && 
-               data.getMinDist(desCity, otherCity) < 24){
+               data.getMinDist(desCity, otherCity) <= 24){
                 score += data.getResDist(otherCity);
                 //System.out.print(Double.toString(data.getResDist(otherCity)) + " ");
             }
         }
-        
+        System.out.println(Double.toString(score) + " " + Integer.toString(desCity));
         return score;
     }
     
@@ -499,6 +550,7 @@ public class Government extends javax.swing.JFrame {
     private javax.swing.JLabel Cagayan;
     private javax.swing.JLabel Cebu;
     private javax.swing.JSpinner DAV;
+    private javax.swing.JSpinner Danger;
     private javax.swing.JLabel Davao;
     private javax.swing.JSpinner MNL;
     private javax.swing.JLabel Manila;
@@ -513,6 +565,7 @@ public class Government extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JSpinner jSpinner7;
     private javax.swing.JLabel max;
     private javax.swing.JLabel per_CDO;
@@ -526,5 +579,6 @@ public class Government extends javax.swing.JFrame {
     private javax.swing.JButton roads;
     private javax.swing.JButton start;
     private javax.swing.JLabel tot;
+    private javax.swing.JLabel tot1;
     // End of variables declaration//GEN-END:variables
 }
