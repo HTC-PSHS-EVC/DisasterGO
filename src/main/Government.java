@@ -1,4 +1,5 @@
 package main;
+import java.awt.Cursor;
 import javax.swing.JOptionPane;
 import javax.swing.JLabel;
 import java.util.Random;
@@ -10,12 +11,33 @@ import java.util.Random;
 public class Government extends javax.swing.JFrame {
     
     private DataManager data;
+    private int [] disasterForecast;
     
     /**
      * Creates new form Government
      */
     public Government() {
         initComponents();
+        
+        initDisasterForecast();
+        
+        start.setOpaque(false);
+        start.setContentAreaFilled(false);
+        start.setBorderPainted(false);
+        start.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        roads.setOpaque(false);
+        roads.setContentAreaFilled(false);
+        roads.setBorderPainted(false);
+        roads.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        help.setOpaque(false);
+        help.setContentAreaFilled(false);
+        help.setBorderPainted(false);
+        help.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        plane.setOpaque(false);
+        plane.setContentAreaFilled(false);
+        plane.setBorderPainted(false);
+        plane.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
         max.setText(maximum+"%");
     }
     
@@ -46,28 +68,62 @@ public class Government extends javax.swing.JFrame {
         DAV = new javax.swing.JSpinner();
         CDO = new javax.swing.JSpinner();
         PUE = new javax.swing.JSpinner();
+        help = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         max = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        per_TAC = new javax.swing.JLabel();
+        per_TUG = new javax.swing.JLabel();
+        per_CEB = new javax.swing.JLabel();
+        per_PUE = new javax.swing.JLabel();
+        per_CDO = new javax.swing.JLabel();
+        per_DAV = new javax.swing.JLabel();
+        per_MAN = new javax.swing.JLabel();
         tot = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        AffectedCityText = new javax.swing.JLabel();
+        start = new javax.swing.JButton();
+        roads = new javax.swing.JButton();
+        plane = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(600, 780));
+        getContentPane().setLayout(null);
 
+        Manila.setFont(new java.awt.Font("Paul Grotesk -Trail", 1, 18)); // NOI18N
         Manila.setText("Manila");
+        getContentPane().add(Manila);
+        Manila.setBounds(160, 240, 70, 30);
 
+        Tuguegarao.setFont(new java.awt.Font("Paul Grotesk -Trail", 1, 18)); // NOI18N
         Tuguegarao.setText("Tuguegarao");
+        getContentPane().add(Tuguegarao);
+        Tuguegarao.setBounds(150, 110, 120, 30);
 
+        Cagayan.setFont(new java.awt.Font("Paul Grotesk -Trail", 1, 18)); // NOI18N
         Cagayan.setText("CDO");
+        getContentPane().add(Cagayan);
+        Cagayan.setBounds(350, 490, 60, 30);
 
+        Davao.setFont(new java.awt.Font("Paul Grotesk -Trail", 1, 18)); // NOI18N
         Davao.setText("Davao");
+        getContentPane().add(Davao);
+        Davao.setBounds(421, 564, 60, 20);
 
+        Puerto.setFont(new java.awt.Font("Paul Grotesk -Trail", 1, 18)); // NOI18N
         Puerto.setText("Puerto Princesa");
+        getContentPane().add(Puerto);
+        Puerto.setBounds(40, 450, 140, 20);
 
+        Cebu.setFont(new java.awt.Font("Paul Grotesk -Trail", 1, 18)); // NOI18N
         Cebu.setText("Cebu");
+        getContentPane().add(Cebu);
+        Cebu.setBounds(310, 410, 60, 20);
 
+        Tacloban.setFont(new java.awt.Font("Paul Grotesk -Trail", 1, 18)); // NOI18N
         Tacloban.setText("Tacloban");
+        getContentPane().add(Tacloban);
+        Tacloban.setBounds(440, 320, 90, 19);
 
         MNL.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
         MNL.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -75,6 +131,8 @@ public class Government extends javax.swing.JFrame {
                 MNLStateChanged(evt);
             }
         });
+        getContentPane().add(MNL);
+        MNL.setBounds(157, 270, 60, 30);
 
         TUG.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
         TUG.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -82,6 +140,8 @@ public class Government extends javax.swing.JFrame {
                 TUGStateChanged(evt);
             }
         });
+        getContentPane().add(TUG);
+        TUG.setBounds(170, 140, 60, 30);
 
         TAC.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
         TAC.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -89,6 +149,8 @@ public class Government extends javax.swing.JFrame {
                 TACStateChanged(evt);
             }
         });
+        getContentPane().add(TAC);
+        TAC.setBounds(450, 340, 60, 30);
 
         CEB.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
         CEB.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -96,6 +158,8 @@ public class Government extends javax.swing.JFrame {
                 CEBStateChanged(evt);
             }
         });
+        getContentPane().add(CEB);
+        CEB.setBounds(307, 430, 60, 30);
 
         DAV.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
         DAV.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -103,6 +167,8 @@ public class Government extends javax.swing.JFrame {
                 DAVStateChanged(evt);
             }
         });
+        getContentPane().add(DAV);
+        DAV.setBounds(417, 590, 70, 30);
 
         CDO.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
         CDO.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -110,6 +176,8 @@ public class Government extends javax.swing.JFrame {
                 CDOStateChanged(evt);
             }
         });
+        getContentPane().add(CDO);
+        CDO.setBounds(347, 520, 60, 30);
 
         PUE.setModel(new javax.swing.SpinnerNumberModel(0, 0, 100, 10));
         PUE.addChangeListener(new javax.swing.event.ChangeListener() {
@@ -117,147 +185,113 @@ public class Government extends javax.swing.JFrame {
                 PUEStateChanged(evt);
             }
         });
+        getContentPane().add(PUE);
+        PUE.setBounds(77, 480, 70, 30);
+        getContentPane().add(help);
+        help.setBounds(510, 680, 33, 60);
 
+        jLabel1.setFont(new java.awt.Font("Bebas", 0, 18)); // NOI18N
         jLabel1.setText("Maximum: ");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 20, 80, 25);
 
+        max.setFont(new java.awt.Font("Bebas", 0, 18)); // NOI18N
         max.setText("100%");
+        getContentPane().add(max);
+        max.setBounds(110, 20, 90, 25);
 
+        jLabel3.setFont(new java.awt.Font("Bebas", 0, 18)); // NOI18N
         jLabel3.setText("Total:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 50, 49, 25);
 
+        per_TAC.setFont(new java.awt.Font("Bebas", 0, 14)); // NOI18N
+        per_TAC.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        per_TAC.setText("0%");
+        getContentPane().add(per_TAC);
+        per_TAC.setBounds(510, 340, 60, 30);
+
+        per_TUG.setFont(new java.awt.Font("Bebas", 0, 14)); // NOI18N
+        per_TUG.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        per_TUG.setText("0%");
+        getContentPane().add(per_TUG);
+        per_TUG.setBounds(170, 170, 60, 30);
+
+        per_CEB.setFont(new java.awt.Font("Bebas", 0, 14)); // NOI18N
+        per_CEB.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        per_CEB.setText("0%");
+        getContentPane().add(per_CEB);
+        per_CEB.setBounds(310, 460, 60, 30);
+
+        per_PUE.setFont(new java.awt.Font("Bebas", 0, 14)); // NOI18N
+        per_PUE.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        per_PUE.setText("0%");
+        getContentPane().add(per_PUE);
+        per_PUE.setBounds(80, 510, 60, 30);
+
+        per_CDO.setFont(new java.awt.Font("Bebas", 0, 14)); // NOI18N
+        per_CDO.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        per_CDO.setText("0%");
+        getContentPane().add(per_CDO);
+        per_CDO.setBounds(340, 550, 60, 30);
+
+        per_DAV.setFont(new java.awt.Font("Bebas", 0, 14)); // NOI18N
+        per_DAV.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        per_DAV.setText("0%");
+        getContentPane().add(per_DAV);
+        per_DAV.setBounds(420, 620, 60, 30);
+
+        per_MAN.setFont(new java.awt.Font("Bebas", 0, 14)); // NOI18N
+        per_MAN.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        per_MAN.setText("0%");
+        getContentPane().add(per_MAN);
+        per_MAN.setBounds(160, 300, 60, 30);
+
+        tot.setFont(new java.awt.Font("Bebas", 0, 18)); // NOI18N
         tot.setText("0%");
+        getContentPane().add(tot);
+        tot.setBounds(80, 50, 50, 25);
 
-        jButton1.setText("Start Simulation");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                startActionPerformed(evt);
             }
         });
+        getContentPane().add(start);
+        start.setBounds(20, 690, 100, 30);
 
-        AffectedCityText.setText("Affected");
+        roads.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                roadsActionPerformed(evt);
+            }
+        });
+        getContentPane().add(roads);
+        roads.setBounds(10, 650, 120, 40);
+        getContentPane().add(plane);
+        plane.setBounds(380, 50, 80, 50);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(282, 282, 282)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DAV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Davao)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(PUE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Puerto)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(max)
-                                .addGap(60, 60, 60)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tot))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addGap(33, 33, 33)
-                                .addComponent(AffectedCityText)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CDO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(Cagayan)))
-                .addGap(200, 200, 200))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(270, 270, 270)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(MNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Manila))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(CEB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Tuguegarao)
-                                .addGap(8, 8, 8))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(TUG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Cebu)
-                        .addGap(92, 92, 92)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Tacloban))))
-                .addGap(106, 106, 106))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(max)
-                    .addComponent(jLabel3)
-                    .addComponent(tot))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(TUG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Tuguegarao))
-                    .addComponent(MNL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Manila)
-                        .addGap(39, 39, 39)
-                        .addComponent(CEB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Cebu)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                        .addComponent(PUE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(DAV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(Puerto)
-                                .addGap(51, 51, 51)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Davao)
-                            .addComponent(Cagayan))
-                        .addGap(25, 25, 25)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(AffectedCityText))
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
-                        .addComponent(TAC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(Tacloban)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(CDO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(90, 90, 90))))
-        );
+        jLabel2.setFont(new java.awt.Font("Paul Grotesk -Trail", 0, 11)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mainph NO ROADS.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 600, 750);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mainph SMALL.png"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 4, 600, 750);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void startSim(){
-        data = new DataManager();
+    
+    private void initDisasterForecast(){
+        disasterForecast = DataManager.calcDisForecast(100);
         
-        
+        per_MAN.setText(Integer.toString(disasterForecast[0]) + "%");
+        per_TUG.setText(Integer.toString(disasterForecast[1]) + "%");
+        per_TAC.setText(Integer.toString(disasterForecast[2]) + "%");
+        per_CEB.setText(Integer.toString(disasterForecast[3]) + "%");
+        per_DAV.setText(Integer.toString(disasterForecast[4]) + "%");
+        per_PUE.setText(Integer.toString(disasterForecast[5]) + "%");
+        per_CDO.setText(Integer.toString(disasterForecast[6]) + "%");
     }
     
     private int getInputSum(){
@@ -266,6 +300,8 @@ public class Government extends javax.swing.JFrame {
                (Integer) PUE.getValue() + (Integer) CDO.getValue() + 
                (Integer) DAV.getValue();
     }
+    
+    // <editor-fold defaultstate="collapsed" desc="State Change Events">  
     
     private void MNLStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_MNLStateChanged
         totalpercent = getInputSum();
@@ -342,39 +378,86 @@ public class Government extends javax.swing.JFrame {
         tot.setText(Integer.toString(totalpercent) + "%");
     }//GEN-LAST:event_CDOStateChanged
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Random rand=new Random();
-        int randomNum = rand.nextInt((6) + 1) + 0;
-        if(randomNum==0){
-            AffectedCityText.setText("Affected: Manila");
-            max.setText(String.valueOf(maximum-(Integer) MNL.getValue())+"%");
-        }
-        else if(randomNum==1){
-            AffectedCityText.setText("Affected: Tacloban");
-            max.setText(String.valueOf(maximum-(Integer) TAC.getValue())+"%");
-        }
-        else if(randomNum==2){
-            AffectedCityText.setText("Affected: Cebu");
-            max.setText(String.valueOf(maximum-(Integer) CEB.getValue())+"%");
-        }
-        else if(randomNum==3){
-            AffectedCityText.setText("Affected: Davao");
-            max.setText(String.valueOf(maximum-(Integer) DAV.getValue())+"%");
-        }
-        else if(randomNum==4){
-            AffectedCityText.setText("Affected: Tuguegarao");
-            max.setText(String.valueOf(maximum-(Integer) TUG.getValue())+"%");
-        }
-        else if(randomNum==5){
-            AffectedCityText.setText("Affected: Puerto Princesa");
-            max.setText(String.valueOf(maximum-(Integer) PUE.getValue())+"%");
-        }
-        else if(randomNum==6){
-            AffectedCityText.setText("Affected: Cagayan de Oro");
-            max.setText(String.valueOf(maximum-(Integer) CDO.getValue())+"%");
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    // </editor-fold> 
+    
+    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+        sim1();
+    }//GEN-LAST:event_startActionPerformed
 
+    private void roadsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_roadsActionPerformed
+        // TODO add your handling code here:
+        jLabel2.setVisible(false);
+    }//GEN-LAST:event_roadsActionPerformed
+
+    private void sim1(){
+        Random rand = new Random();
+        int totalScore = 0;
+        
+        for(int desCity = 0; desCity < 7; ++desCity){
+            totalScore += getResAvailability(desCity);
+            
+            //System.out.println(Double.toString(score) + " " + Integer.toString(desCity));
+            //max.setText(Double.toString(data.getMinDist(, score)))
+        }
+        
+        max.setText(Double.toString(totalScore/7.0));
+    }
+    
+    private void sim2(){
+        int desCity = 0;
+        Random ran = new Random();
+        int ranNum = ran.nextInt(100);
+        while(ranNum > disasterForecast[desCity]){
+            ranNum -= disasterForecast[desCity];
+            desCity++;
+        }
+        
+        int score = getResAvailability(desCity);
+        max.setText(Double.toString(score) + "->" + Integer.toString(desCity));
+    }
+    
+    private int getResAvailability(int desCity){
+        data = new DataManager();
+            
+        data.setResDist(0, (Integer) MNL.getValue());
+        data.setResDist(1, (Integer) TUG.getValue());
+        data.setResDist(2, (Integer) TAC.getValue());
+        data.setResDist(3, (Integer) CEB.getValue());
+        data.setResDist(4, (Integer) DAV.getValue());
+        data.setResDist(5, (Integer) PUE.getValue());
+        data.setResDist(6, (Integer) CDO.getValue());
+        
+        //  assume that the affected city's airport gets rekt
+        //  50% chance for each road leading to the city to get rekt
+        for(int otherCity = 0; otherCity < 7; ++otherCity){
+            if(otherCity != desCity){
+                data.destAir(desCity, otherCity);
+                data.destAir(otherCity, desCity);
+
+                //if(rand.nextDouble() > 0.5){
+                //    data.destRoad(desCity, otherCity);
+                //    data.destRoad(otherCity, desCity);
+                //}
+            }
+        }
+
+        //  recalculate shortest paths
+        data.calcNewDist();
+        data.calcAPSP();
+        
+        int score = 0;
+        
+        for(int otherCity = 0; otherCity < 7; ++otherCity){
+            if(otherCity != desCity && 
+               data.getMinDist(desCity, otherCity) < 24){
+                score += data.getResDist(otherCity);
+                //System.out.print(Double.toString(data.getResDist(otherCity)) + " ");
+            }
+        }
+        
+        return score;
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -411,7 +494,6 @@ public class Government extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel AffectedCityText;
     private javax.swing.JSpinner CDO;
     private javax.swing.JSpinner CEB;
     private javax.swing.JLabel Cagayan;
@@ -426,11 +508,23 @@ public class Government extends javax.swing.JFrame {
     private javax.swing.JSpinner TUG;
     private javax.swing.JLabel Tacloban;
     private javax.swing.JLabel Tuguegarao;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton help;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JSpinner jSpinner7;
     private javax.swing.JLabel max;
+    private javax.swing.JLabel per_CDO;
+    private javax.swing.JLabel per_CEB;
+    private javax.swing.JLabel per_DAV;
+    private javax.swing.JLabel per_MAN;
+    private javax.swing.JLabel per_PUE;
+    private javax.swing.JLabel per_TAC;
+    private javax.swing.JLabel per_TUG;
+    private javax.swing.JButton plane;
+    private javax.swing.JButton roads;
+    private javax.swing.JButton start;
     private javax.swing.JLabel tot;
     // End of variables declaration//GEN-END:variables
 }
